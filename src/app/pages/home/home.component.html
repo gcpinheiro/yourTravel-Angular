@@ -1,0 +1,108 @@
+<div class="container" fxLayout="column" fxLayoutAlign="flex-start center">
+	<div class="box-one" fxLayout="column" fxLayoutAlign="flex-start center">
+		<div class="info-top" fxLayout="row" fxLayoutAlign="center center">
+			<div class="box-header" fxLayout="row" fxLayoutAlign="space-between center">
+				<img src="/assets/logo-branca.png">
+				<div class="info-help" fxLayout="row" fxLayoutAlign="space-between center">	
+					<mat-icon mat-list-icon>help_outline</mat-icon>
+					<a routerLink="/home"> Precisa de ajuda?</a>
+				</div>
+			</div>
+		</div>
+	  	<div class="line"></div>
+		<div class="tickets-container" fxLayout="column" fxLayoutAlign="flex-start center">
+			<header fxLayout="row" fxLayoutAlign="space-between center">
+				<span>Passagens</span>
+				<span>Hotéis</span>
+				<span>Pacotes</span>
+				<span>Ofertas</span>
+				<span>Dicas</span>
+			</header>
+			<mat-progress-bar mode="indeterminate" *ngIf="state"></mat-progress-bar>
+			<div class="tickets-box" fxLayout="column" fxLayoutAlign="flex-start flex-start">
+				<div class="tickets-options" fxLayout="row" fxLayoutAlign="space-between center">
+					<mat-form-field appearance="outline" style="height: 30px;">
+					    <mat-label>Ida e volta</mat-label>
+					    <mat-select [(ngModel)]="selectedValue" name="food">
+					      <mat-option *ngFor="let food of foods" [value]="food.value">
+					        {{food.viewValue}}
+					      </mat-option>
+					    </mat-select>
+					</mat-form-field>
+				</div>
+
+				<div class="tickets-form" fxLayout="row" fxLayoutAlign="space-between center">	
+					<mat-form-field appearance="outline" class="my-class">
+					   	<input matInput placeholder="Origem">
+					</mat-form-field>
+					<mat-form-field appearance="outline" class="my-class">
+					   	<input matInput placeholder="Destino">
+					</mat-form-field>
+					<mat-form-field appearance="outline" class="example-form-field">
+					  <mat-label>Data de ida</mat-label>
+					  <input matInput [matDatepicker]="datepicker">
+					  <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+					  <mat-datepicker #datepicker>
+					    <mat-datepicker-actions>
+					      <button mat-button matDatepickerCancel>Cancel</button>
+					      <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+					    </mat-datepicker-actions>
+					  </mat-datepicker>
+					</mat-form-field>
+
+					<mat-form-field appearance="outline" class="example-form-field">
+					  <mat-label>Data de volta</mat-label>
+					  <input matInput [matDatepicker]="datepicker2">
+					  <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
+					  <mat-datepicker #datepicker2>
+					    <mat-datepicker-actions>
+					      <button mat-button matDatepickerCancel>Cancel</button>
+					      <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+					    </mat-datepicker-actions>
+					  </mat-datepicker>
+					</mat-form-field>
+
+					<button mat-flat-button color="primary" (click)="stateBar()">Buscar Passagens</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="box-two" fxLayout="row" fxLayoutAlign="space-around center">
+		<div style="width: 20%; height: 80%;">
+			<span>Pacotes</span>
+		</div>
+		<div style="width: 40%; height: 80%;" fxLayout="row" fxLayoutAlign="space-around center">
+			<div class="boxs">
+			
+			</div>
+			<div class="boxs">
+				
+			</div>
+			<div class="boxs">
+				
+			</div>
+		</div>
+		
+	</div>
+	<!--<div class="line" style="width: 100%; margin-top: 10px;border-bottom: 1px solid #DADCE0;"></div>-->
+	<div class="box-three" fxLayout="column" fxLayoutAlign="flex-start center">
+		<div class="show-tickes-container" fxLayout="column" fxLayoutAlign="flex-start center">
+			<div class="result-tickets" fxLayout="row" fxLayoutAlign="flex-start center" *ngFor="let carrie of carries">
+				<img src={{carrie.imageUrl}} class="logo-carries">
+				<div fxLayout="column" fxLayoutAlign="space-around center" style="height: 95%;
+					width: 20%; margin-left: 10%">
+					<span>{{carrie.hour}}</span>
+					<span>{{carrie.name}}</span>
+				</div>
+				<div fxLayout="column" fxLayoutAlign="space-around center" style="height: 95%; margin-left: 10%; width: 20%;">
+					<span>{{carrie.duracao}}</span>
+					<span>{{carrie.place}}</span>
+				</div>
+				<div fxLayout="column" fxLayoutAlign="space-around center" style="height: 95%; margin-left: 9%; width: 20%;">
+					<span >{{carrie.value}}</span>
+					<span>{{carrie.type}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
